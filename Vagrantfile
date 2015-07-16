@@ -23,11 +23,11 @@ $addAgentContainers=<<END
 END
 
 $runConsulServer=<<END
-  docker run -d -p 8400:8400 -p 8500:8500 -p 8600:53/udp -p 8301:8301 -h node1 progrium/consul -server -bootstrap -ui-dir /ui
+  docker run -d -p 8302:8302 -p 8301:8301 -p 8400:8400 -p 8500:8500 -p 8600:53/udp -p 8301:8301 -h node1 progrium/consul -server -bootstrap -ui-dir /ui
 END
 
 $runConsulClient=<<END
-  docker run -d -p 8301:8301 -p 8400:8400 -p 8500:8500 -p 8600:53/udp --name client -h client progrium/consul -join 192.168.10.10
+  docker run -d -p 8302:8302 -p 8301:8301 -p 8400:8400 -p 8500:8500 -p 8600:53/udp --name client -h client progrium/consul -join 192.168.10.10
 END
 
 Vagrant.configure(2) do |config|
@@ -47,7 +47,7 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.define "agent" do |agent|
-    agent.vm.network "private_network", ip: "192.168.10.11"
+    #agent.vm.network "private_network", ip: "192.168.10.11"
     #agent.vm.network "forwarded_port", guest: 8500, host: 8501 # Consul HTTP
     #agent.vm.network "forwarded_port", guest: 8400, host: 8401 # Consul RPC
 
