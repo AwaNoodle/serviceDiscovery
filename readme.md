@@ -1,4 +1,4 @@
-# serviceDisocvery
+# serviceDiscovery
 
 A simple test repository for simulating service discovery for Docker containers using [Registrator](https://github.com/gliderlabs/registrator) &&  [Consul](https://github.com/gliderlabs/docker-consul/tree/legacy). Registrator is a handy container that tracks Docker containers starting up and shutting down and reports them to a registrar. 
 
